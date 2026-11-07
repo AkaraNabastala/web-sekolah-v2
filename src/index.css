@@ -1,0 +1,270 @@
+@import "tailwindcss";
+
+:root {
+  --school-primary: #1B3B2B;
+  --school-secondary: #E5C178;
+  --school-accent-orange: #C87941;
+  --school-accent-blue: #547C91;
+}
+
+@theme {
+  --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-poppins: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+html {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+section {
+  scroll-margin-top: 80px; 
+}
+
+/* Animasi tambahan untuk kartu */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+/* Shared school palette: all Tailwind emerald/amber utility shades follow Website Settings. */
+.public-shell .bg-emerald-950,
+.public-shell .bg-emerald-900,
+.public-shell .bg-emerald-800,
+.public-shell .bg-emerald-700,
+.public-shell .bg-emerald-600 {
+  background-color: var(--school-primary) !important;
+}
+.public-shell .bg-emerald-50,
+.public-shell .bg-emerald-100 {
+  background-color: color-mix(in srgb, var(--school-primary), white 93%) !important;
+}
+.public-shell .text-emerald-950,
+.public-shell .text-emerald-900,
+.public-shell .text-emerald-800,
+.public-shell .text-emerald-700,
+.public-shell .text-emerald-600 {
+  color: var(--school-primary) !important;
+}
+.public-shell .border-emerald-950,
+.public-shell .border-emerald-900,
+.public-shell .border-emerald-800,
+.public-shell .border-emerald-700,
+.public-shell .border-emerald-600 {
+  border-color: var(--school-primary) !important;
+}
+.public-shell .border-emerald-50,
+.public-shell .border-emerald-100,
+.public-shell .border-emerald-200 {
+  border-color: color-mix(in srgb, var(--school-primary), white 78%) !important;
+}
+.public-shell .bg-amber-400,
+.public-shell .bg-amber-500 {
+  background-color: var(--school-secondary) !important;
+}
+.public-shell .bg-amber-50,
+.public-shell .bg-amber-100 {
+  background-color: color-mix(in srgb, var(--school-secondary), white 84%) !important;
+}
+.public-shell .text-amber-400,
+.public-shell .text-amber-300,
+.public-shell .text-amber-200,
+.public-shell .text-amber-500,
+.public-shell .text-amber-600 {
+  color: var(--school-secondary) !important;
+}
+.public-shell .border-amber-400,
+.public-shell .border-amber-300,
+.public-shell .border-amber-200 {
+  border-color: var(--school-secondary) !important;
+}
+
+/* Admin dashboard uses the same configurable tokens as public pages. */
+.admin-shell .bg-emerald-950,
+.admin-shell .bg-emerald-900,
+.admin-shell .bg-emerald-800,
+.admin-shell .bg-emerald-700,
+.admin-shell .bg-emerald-600 {
+  background-color: var(--school-primary) !important;
+}
+.admin-shell .bg-emerald-50,
+.admin-shell .bg-emerald-100 {
+  background-color: color-mix(in srgb, var(--school-primary), white 93%) !important;
+}
+.admin-shell .text-emerald-950,
+.admin-shell .text-emerald-900,
+.admin-shell .text-emerald-800,
+.admin-shell .text-emerald-700,
+.admin-shell .text-emerald-600 {
+  color: var(--school-primary) !important;
+}
+.admin-shell .border-emerald-950,
+.admin-shell .border-emerald-900,
+.admin-shell .border-emerald-800,
+.admin-shell .border-emerald-700,
+.admin-shell .border-emerald-600 {
+  border-color: color-mix(in srgb, var(--school-primary), white 18%) !important;
+}
+.admin-shell .bg-amber-400,
+.admin-shell .bg-amber-500 {
+  background-color: var(--school-secondary) !important;
+}
+.admin-shell .bg-amber-50,
+.admin-shell .bg-amber-100 {
+  background-color: color-mix(in srgb, var(--school-secondary), white 84%) !important;
+}
+.admin-shell .text-amber-400,
+.admin-shell .text-amber-500,
+.admin-shell .text-amber-600 {
+  color: var(--school-secondary) !important;
+}
+.admin-shell .border-amber-400,
+.admin-shell .border-amber-300,
+.admin-shell .border-amber-200 {
+  border-color: var(--school-secondary) !important;
+}
+
+/* Map warna literal dari komponen lama ke token tema sekolah. */
+.public-shell [class*="bg-[#1B3B2B]"],
+.public-shell [class*="bg-[#132A1E]"],
+.public-shell [class*="bg-[#2A5C40]"] {
+  background-color: var(--school-primary) !important;
+}
+.public-shell [class*="text-[#1B3B2B]"],
+.public-shell [class*="text-[#132A1E]"],
+.public-shell [class*="text-[#2A5C40]"],
+.public-shell [class*="text-[#1D4A32]"] {
+  color: var(--school-primary) !important;
+}
+.public-shell [class*="border-[#1B3B2B]"],
+.public-shell [class*="border-[#2A5C40]"] {
+  border-color: var(--school-primary) !important;
+}
+.public-shell [class*="bg-[#E5C178]"],
+.public-shell [class*="bg-[#E8CF94]"],
+.public-shell [class*="bg-[#DEBD7A]"] {
+  background-color: var(--school-secondary) !important;
+}
+.public-shell [class*="text-[#E5C178]"],
+.public-shell [class*="text-[#DEBD7A]"] {
+  color: var(--school-secondary) !important;
+}
+.public-shell [class*="border-[#E5C178]"] {
+  border-color: var(--school-secondary) !important;
+}
+
+.public-shell [class*="bg-[#0E2016]"],
+.public-shell [class*="bg-[#14231A]"],
+.public-shell [class*="bg-[#254F3A]"] {
+  background-color: var(--school-primary) !important;
+}
+.public-shell [class*="text-[#1D4A32]"],
+.public-shell [class*="text-[#2A5C40]"] {
+  color: var(--school-primary) !important;
+}
+.public-shell [class*="bg-[#E8CF94]"],
+.public-shell [class*="bg-[#E5C178]"] {
+  background-color: var(--school-secondary) !important;
+}
+
+/* Additional legacy palette values used by older public pages. */
+.public-shell [class*="bg-[#E8EFEA]"],
+.public-shell [class*="bg-[#D5E0D7]"],
+.public-shell [class*="bg-[#D1E0D5]"],
+.public-shell [class*="bg-[#E2EBE4]"],
+.public-shell [class*="bg-[#F3F7F4]"] {
+  background-color: color-mix(in srgb, var(--school-primary), white 92%) !important;
+}
+.public-shell [class*="text-[#1F2621]"],
+.public-shell [class*="text-[#2C332D]"] {
+  color: color-mix(in srgb, var(--school-primary), black 12%) !important;
+}
+.public-shell [class*="text-[#3D473F]"] {
+  color: color-mix(in srgb, var(--school-primary), white 12%) !important;
+}
+.public-shell [class*="border-[#D5E0D7]"],
+.public-shell [class*="border-[#D1E0D5]"],
+.public-shell [class*="border-[#E2EBE4]"] {
+  border-color: color-mix(in srgb, var(--school-primary), white 78%) !important;
+}
+.public-shell [class*="text-[#785E2F]"] {
+  color: color-mix(in srgb, var(--school-secondary), black 38%) !important;
+}
+.public-shell [class*="text-[#E8CF94]"] {
+  color: var(--school-secondary) !important;
+}
+.public-shell [class*="border-[#E8CF94]"],
+.public-shell [class*="border-[#DEBD7A]"] {
+  border-color: var(--school-secondary) !important;
+}
+
+/* Include Tailwind opacity variants and interactive states used in legacy components. */
+.public-shell [class*="bg-emerald-950"],
+.public-shell [class*="bg-emerald-900"],
+.public-shell [class*="bg-emerald-800"],
+.public-shell [class*="bg-emerald-700"],
+.public-shell [class*="bg-emerald-600"] {
+  background-color: var(--school-primary) !important;
+}
+.public-shell [class*="bg-emerald-50"],
+.public-shell [class*="bg-emerald-100"] {
+  background-color: color-mix(in srgb, var(--school-primary), white 93%) !important;
+}
+.public-shell [class*="text-emerald-200"] {
+  color: color-mix(in srgb, var(--school-primary), white 76%) !important;
+}
+.public-shell [class*="text-emerald-300"] {
+  color: color-mix(in srgb, var(--school-primary), white 64%) !important;
+}
+.public-shell [class*="text-emerald-400"] {
+  color: color-mix(in srgb, var(--school-primary), white 48%) !important;
+}
+.public-shell [class*="hover:bg-emerald-"]:hover {
+  background-color: var(--school-primary) !important;
+}
+.public-shell [class*="hover:text-emerald-"]:hover {
+  color: var(--school-primary) !important;
+}
+.public-shell [class*="hover:bg-amber-"]:hover {
+  background-color: var(--school-secondary) !important;
+}
+.public-shell [class*="hover:text-amber-"]:hover {
+  color: var(--school-secondary) !important;
+}
+.admin-shell [class*="bg-emerald-950"],
+.admin-shell [class*="bg-emerald-900"],
+.admin-shell [class*="bg-emerald-800"],
+.admin-shell [class*="bg-emerald-700"],
+.admin-shell [class*="bg-emerald-600"] {
+  background-color: var(--school-primary) !important;
+}
+.admin-shell [class*="bg-emerald-50"],
+.admin-shell [class*="bg-emerald-100"] {
+  background-color: color-mix(in srgb, var(--school-primary), white 93%) !important;
+}
+.admin-shell [class*="hover:bg-emerald-"]:hover {
+  background-color: var(--school-primary) !important;
+}
+.admin-shell [class*="hover:text-emerald-"]:hover {
+  color: var(--school-primary) !important;
+}
+.admin-shell [class*="hover:bg-amber-"]:hover {
+  background-color: var(--school-secondary) !important;
+}
+.admin-shell [class*="hover:text-amber-"]:hover {
+  color: var(--school-secondary) !important;
+}

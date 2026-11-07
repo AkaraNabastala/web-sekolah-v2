@@ -1,0 +1,2 @@
+// Domain models: news
+export {};

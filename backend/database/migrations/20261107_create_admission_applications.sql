@@ -1,0 +1,23 @@
+CREATE TABLE IF NOT EXISTS admission_applications (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  application_code VARCHAR(40) NOT NULL UNIQUE,
+  candidate_name VARCHAR(150) NOT NULL,
+  national_id VARCHAR(32) DEFAULT NULL,
+  birth_place VARCHAR(100) DEFAULT NULL,
+  birth_date DATE DEFAULT NULL,
+  gender ENUM('L','P') DEFAULT NULL,
+  origin_school VARCHAR(180) NOT NULL,
+  parent_name VARCHAR(150) NOT NULL,
+  parent_phone VARCHAR(40) NOT NULL,
+  address TEXT DEFAULT NULL,
+  program VARCHAR(120) DEFAULT 'Reguler',
+  notes TEXT DEFAULT NULL,
+  documents JSON DEFAULT NULL,
+  status ENUM('received','verified','accepted','rejected') NOT NULL DEFAULT 'received',
+  admin_notes TEXT DEFAULT NULL,
+  academic_year VARCHAR(30) DEFAULT NULL,
+  submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_admission_status (status, submitted_at),
+  INDEX idx_admission_candidate (candidate_name)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

@@ -1,0 +1,2 @@
+// Domain models: school
+export {};

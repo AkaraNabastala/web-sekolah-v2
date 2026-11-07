@@ -1,0 +1,29 @@
+.school-rich-editor .p-editor-container {
+  border: 0;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+.school-rich-editor .p-editor-toolbar {
+  border: 0;
+  border-bottom: 1px solid #e7e5e4;
+  background: #fafaf9;
+  padding: 0.65rem 0.75rem;
+}
+.school-rich-editor .p-editor-content {
+  border: 0;
+  color: #292524;
+  font-family: inherit;
+  font-size: 0.875rem;
+}
+.school-rich-editor .ql-editor {
+  min-height: 180px;
+  line-height: 1.7;
+}
+.school-rich-editor .ql-editor.ql-blank::before {
+  color: #a8a29e;
+  font-style: normal;
+}
+.school-rich-editor .ql-toolbar button:hover,
+.school-rich-editor .ql-toolbar button:focus {
+  color: #047857;
+}
