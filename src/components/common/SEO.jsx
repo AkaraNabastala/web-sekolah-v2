@@ -10,7 +10,7 @@ export const SEO = ({ title, description = 'Website resmi sekolah. Informasi pro
         ? `${faviconSource}${faviconSource.includes('?') ? '&' : '?'}v=${assetVersion}`
         : '/favicon.svg';
     useEffect(() => {
-        const fullTitle = title ? `${title} | ${schoolName}` : schoolName;
+        const fullTitle = schoolName;
         if (document.title !== fullTitle)
             document.title = fullTitle;
         const setMetaTag = (selector, attr, value) => {
