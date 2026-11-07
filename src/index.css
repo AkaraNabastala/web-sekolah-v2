@@ -28,7 +28,7 @@ button, input, select, textarea {
 }
 
 section {
-  scroll-margin-top: 80px; 
+  scroll-margin-top: 80px;
 }
 
 /* Animasi tambahan untuk kartu */
@@ -267,4 +267,64 @@ section {
 }
 .admin-shell [class*="hover:text-amber-"]:hover {
   color: var(--school-secondary) !important;
+}
+
+/* Shared identity wrapping: preserve the complete school name/tagline in every logo placement. */
+.school-logo {
+  align-items: flex-start;
+  min-width: 0;
+  max-width: 100%;
+}
+.school-logo__text {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  white-space: normal;
+}
+.school-logo__name,
+.school-logo__tagline {
+  overflow-wrap: anywhere;
+  word-break: normal;
+  white-space: normal;
+  text-overflow: clip;
+}
+.public-shell header .school-logo {
+  max-width: min(60vw, 22rem);
+}
+.public-shell header a:has(> .school-logo) {
+  min-width: 0;
+  max-width: min(60vw, 22rem);
+  flex: 0 1 auto;
+}
+.public-shell header .max-w-7xl > .flex:has(> a > .school-logo) {
+  height: auto;
+  min-height: 5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.admin-shell aside a:has(> .school-logo) {
+  min-width: 0;
+  max-width: calc(100% - 2.75rem);
+  flex: 1 1 0%;
+}
+.admin-shell aside .school-logo__text {
+  max-width: 100%;
+}
+
+/* Remix Icon brand glyphs share the same button size while retaining official brand colors. */
+.social-brand-link {
+  color: var(--social-brand-color, #fff);
+}
+.social-brand-link:hover {
+  color: #fff;
+  background-color: var(--social-brand-hover, var(--school-secondary));
+}
+
+@media (max-width: 640px) {
+  .public-shell header .school-logo {
+    max-width: min(68vw, 18rem);
+  }
+  .public-shell header a:has(> .school-logo) {
+    max-width: min(68vw, 18rem);
+  }
 }

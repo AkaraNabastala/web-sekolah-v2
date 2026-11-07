@@ -1,26 +1,81 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import React from 'react';
 import { ADMISSION_LABEL } from '../../config/admissions';
 import { Link as RouterLink } from 'react-router-dom';
-import { MapPin, Phone, Mail, ChevronRight, Camera, Users, Play, Music2, MessageCircle, } from 'lucide-react';
+import { MapPin, Phone, Mail, ChevronRight } from 'lucide-react';
 import { SchoolLogo } from './SchoolLogo';
+import { SocialLinks } from './SocialLinks';
 import { useSchool } from '../../context/SchoolContext';
+
 const Link = ({ feature, ...props }) => {
     const { settings } = useSchool();
     let flags = settings?.feature_flags;
     if (typeof flags === 'string') {
-        try {
-            flags = JSON.parse(flags);
-        }
-        catch {
-            flags = null;
-        }
+        try { flags = JSON.parse(flags); } catch { flags = null; }
     }
-    if (feature && flags?.[feature] === false)
-        return null;
-    return _jsx(RouterLink, { ...props });
+    if (feature && flags?.[feature] === false) return null;
+    return <RouterLink {...props} />;
 };
+
 export const Footer = () => {
     const { profile, settings } = useSchool();
-    return (_jsxs("footer", { className: "text-white font-poppins relative overflow-hidden border-t-4", style: { backgroundColor: 'var(--school-primary)', borderTopColor: 'var(--school-secondary)' }, children: [_jsx("div", { className: "absolute inset-0 opacity-5 pointer-events-none bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]" }), _jsxs("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 relative z-10", children: [_jsxs("div", { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-10 border-b border-white/15", children: [_jsxs("div", { className: "lg:col-span-4 space-y-4", children: [_jsx(SchoolLogo, { size: "lg", lightText: true }), _jsx("p", { className: "text-emerald-200/90 text-xs leading-relaxed font-normal mt-3", children: profile?.description || settings?.tagline || 'Informasi dan profil resmi sekolah.' }), _jsxs("div", { className: "flex items-center gap-3 pt-3", children: [settings?.instagram_url && _jsx("a", { href: settings.instagram_url, target: "_blank", rel: "noreferrer", className: "w-9 h-9 rounded-full bg-emerald-900/80 hover:bg-amber-400 hover:text-emerald-950 transition-all flex items-center justify-center text-emerald-200 shadow-sm", "aria-label": "Instagram", children: _jsx(Camera, { className: "w-4 h-4" }) }), settings?.facebook_url && _jsx("a", { href: settings.facebook_url, target: "_blank", rel: "noreferrer", className: "w-9 h-9 rounded-full bg-emerald-900/80 hover:bg-amber-400 hover:text-emerald-950 transition-all flex items-center justify-center text-emerald-200 shadow-sm", "aria-label": "Facebook", children: _jsx(Users, { className: "w-4 h-4" }) }), settings?.youtube_url && _jsx("a", { href: settings.youtube_url, target: "_blank", rel: "noreferrer", className: "w-9 h-9 rounded-full bg-emerald-900/80 hover:bg-amber-400 hover:text-emerald-950 transition-all flex items-center justify-center text-emerald-200 shadow-sm", "aria-label": "YouTube", children: _jsx(Play, { className: "w-4 h-4" }) }), settings?.tiktok_url && _jsx("a", { href: settings.tiktok_url, target: "_blank", rel: "noreferrer", className: "w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center text-white", "aria-label": "TikTok", children: _jsx(Music2, { className: "w-4 h-4" }) }), profile?.whatsapp && _jsxs("a", { href: profile?.whatsapp ? `https://wa.me/${profile.whatsapp.replace(/\D/g, '')}` : undefined, target: "_blank", rel: "noreferrer", className: "px-3.5 py-1.5 rounded-full bg-emerald-700/80 hover:bg-emerald-600 text-white font-medium text-xs flex items-center gap-1.5 transition-all shadow-sm", children: [_jsx(MessageCircle, { className: "w-4 h-4" }), _jsx("span", { children: "WhatsApp" })] })] })] }), _jsxs("div", { className: "lg:col-span-3 space-y-3", children: [_jsxs("h4", { className: "text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2", children: [_jsx("span", { className: "w-2 h-2 rounded-full bg-amber-400" }), "Navigasi Halaman"] }), _jsxs("ul", { className: "space-y-2 text-xs text-emerald-200/80", children: [_jsx("li", { children: _jsxs(Link, { to: "/", className: "hover:text-amber-300 transition-colors flex items-center gap-1.5", children: [_jsx(ChevronRight, { className: "w-3.5 h-3.5 text-emerald-600" }), _jsx("span", { children: "Beranda Utama" })] }) }), _jsx("li", { children: _jsxs(Link, { to: "/profil", className: "hover:text-amber-300 transition-colors flex items-center gap-1.5", children: [_jsx(ChevronRight, { className: "w-3.5 h-3.5 text-emerald-600" }), _jsx("span", { children: "Identitas & Profil Sekolah" })] }) }), _jsx("li", { children: _jsxs(Link, { to: "/sejarah", feature: "history", className: "hover:text-amber-300 transition-colors flex items-center gap-1.5", children: [_jsx(ChevronRight, { className: "w-3.5 h-3.5 text-emerald-600" }), _jsx("span", { children: "Sejarah Perjalanan" })] }) }), _jsx("li", { children: _jsxs(Link, { to: "/visi-misi", className: "hover:text-amber-300 transition-colors flex items-center gap-1.5", children: [_jsx(ChevronRight, { className: "w-3.5 h-3.5 text-emerald-600" }), _jsx("span", { children: "Visi, Misi & Nilai Utama" })] }) }), _jsx("li", { children: _jsxs(Link, { to: "/organisasi", feature: "organization", className: "hover:text-amber-300 transition-colors flex items-center gap-1.5", children: [_jsx(ChevronRight, { className: "w-3.5 h-3.5 text-emerald-600" }), _jsx("span", { children: "Struktur Organisasi" })] }) }), _jsx("li", { children: _jsxs(Link, { to: "/guru-staf", feature: "teachers", className: "hover:text-amber-300 transition-colors flex items-center gap-1.5", children: [_jsx(ChevronRight, { className: "w-3.5 h-3.5 text-emerald-600" }), _jsx("span", { children: "Guru & Tenaga Kependidikan" })] }) }), _jsx("li", { children: _jsxs(Link, { to: "/berita", feature: "news", className: "hover:text-amber-300 transition-colors flex items-center gap-1.5", children: [_jsx(ChevronRight, { className: "w-3.5 h-3.5 text-emerald-600" }), _jsx("span", { children: "Berita Sekolah" })] }) }), _jsx("li", { children: _jsxs(Link, { to: "/agenda", feature: "agenda", className: "hover:text-amber-300 transition-colors flex items-center gap-1.5", children: [_jsx(ChevronRight, { className: "w-3.5 h-3.5 text-emerald-600" }), _jsx("span", { children: "Agenda Kegiatan" })] }) }), _jsx("li", { children: _jsxs(Link, { to: "/pengumuman", feature: "announcements", className: "hover:text-amber-300 transition-colors flex items-center gap-1.5", children: [_jsx(ChevronRight, { className: "w-3.5 h-3.5 text-emerald-600" }), _jsx("span", { children: "Pengumuman" })] }) })] })] }), _jsxs("div", { className: "lg:col-span-2 space-y-3", children: [_jsxs("h4", { className: "text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2", children: [_jsx("span", { className: "w-2 h-2 rounded-full bg-amber-400" }), "Layanan & Info"] }), _jsxs("ul", { className: "space-y-2 text-xs text-emerald-200/80", children: [_jsx("li", { children: _jsxs(Link, { to: "/ppdb", feature: "ppdb", className: "hover:text-amber-300 transition-colors flex items-center gap-1.5 font-semibold text-amber-300", children: [_jsx(ChevronRight, { className: "w-3.5 h-3.5 text-amber-400" }), _jsxs("span", { children: ["Informasi ", ADMISSION_LABEL] })] }) }), _jsx("li", { children: _jsxs(Link, { to: "/prestasi", feature: "achievements", className: "hover:text-amber-300 transition-colors flex items-center gap-1.5", children: [_jsx(ChevronRight, { className: "w-3.5 h-3.5 text-emerald-600" }), _jsx("span", { children: "Galeri Prestasi Siswa" })] }) }), _jsx("li", { children: _jsxs(Link, { to: "/fasilitas", feature: "facilities", className: "hover:text-amber-300 transition-colors flex items-center gap-1.5", children: [_jsx(ChevronRight, { className: "w-3.5 h-3.5 text-emerald-600" }), _jsx("span", { children: "Sarana & Fasilitas" })] }) }), _jsx("li", { children: _jsxs(Link, { to: "/galeri", feature: "gallery", className: "hover:text-amber-300 transition-colors flex items-center gap-1.5", children: [_jsx(ChevronRight, { className: "w-3.5 h-3.5 text-emerald-600" }), _jsx("span", { children: "Dokumentasi Foto & Video" })] }) }), _jsx("li", { children: _jsxs(Link, { to: "/kontak", feature: "contact", className: "hover:text-amber-300 transition-colors flex items-center gap-1.5", children: [_jsx(ChevronRight, { className: "w-3.5 h-3.5 text-emerald-600" }), _jsx("span", { children: "Kirim Pesan / Kontak" })] }) })] })] }), _jsxs("div", { className: "lg:col-span-3 space-y-3", children: [_jsxs("h4", { className: "text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2", children: [_jsx("span", { className: "w-2 h-2 rounded-full bg-white/70" }), "Kontak Sekolah"] }), _jsxs("div", { className: "space-y-2.5 text-xs text-emerald-200/80", children: [profile?.address && _jsxs("div", { className: "flex items-start gap-2.5", children: [_jsx(MapPin, { className: "w-4 h-4 text-amber-400 shrink-0 mt-0.5" }), _jsx("span", { children: profile.address })] }), profile?.phone && _jsxs("div", { className: "flex items-center gap-2.5", children: [_jsx(Phone, { className: "w-4 h-4 text-amber-400 shrink-0" }), _jsx("a", { href: `tel:${profile.phone}`, className: "hover:text-white", children: profile.phone })] }), profile?.email && _jsxs("div", { className: "flex items-center gap-2.5", children: [_jsx(Mail, { className: "w-4 h-4 text-amber-400 shrink-0" }), _jsx("a", { href: `mailto:${profile.email}`, className: "hover:text-white", children: profile.email })] })] })] })] }), _jsxs("div", { className: "pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-emerald-300/80", children: [_jsx("p", { children: settings?.footer_text || `© ${new Date().getFullYear()} ${settings?.school_name || profile?.name || 'Sekolah'}. Hak cipta dilindungi.` }), _jsxs("div", { className: "flex flex-wrap items-center justify-center gap-4", children: [_jsx(Link, { to: "/kontak", feature: "contact", className: "hover:text-white transition-colors", children: "Kontak Sekolah" }), _jsx("span", { className: "text-white/30", children: "\u2022" }), _jsxs("span", { className: "text-white/70", children: ["Website sekolah dikembangkan oleh ", _jsx("span", { className: "font-semibold", style: { color: 'var(--school-secondary)' }, children: "Nabastala" })] })] })] })] })] }));
+    const navigation = [
+        ['/', 'Beranda Utama'], ['/profil', 'Identitas & Profil Sekolah'], ['/sejarah', 'Sejarah Perjalanan', 'history'],
+        ['/visi-misi', 'Visi, Misi & Nilai Utama'], ['/organisasi', 'Struktur Organisasi', 'organization'],
+        ['/guru-staf', 'Guru & Tenaga Kependidikan', 'teachers'], ['/berita', 'Berita Sekolah', 'news'],
+        ['/agenda', 'Agenda Kegiatan', 'agenda'], ['/pengumuman', 'Pengumuman', 'announcements']
+    ];
+    const services = [
+        ['/ppdb', `Informasi ${ADMISSION_LABEL}`, 'ppdb'], ['/prestasi', 'Galeri Prestasi Siswa', 'achievements'],
+        ['/fasilitas', 'Sarana & Fasilitas', 'facilities'], ['/galeri', 'Dokumentasi Foto & Video', 'gallery'],
+        ['/kontak', 'Kirim Pesan / Kontak', 'contact']
+    ];
+
+    return (
+        <footer className="relative overflow-hidden border-t-4 font-poppins text-white" style={{ backgroundColor: 'var(--school-primary)', borderTopColor: 'var(--school-secondary)' }}>
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] opacity-5" />
+            <div className="relative z-10 mx-auto max-w-7xl px-4 pb-12 pt-16 sm:px-6 lg:px-8">
+                <div className="grid grid-cols-1 gap-8 border-b border-white/15 pb-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-10">
+                    <div className="space-y-4 sm:col-span-2 lg:col-span-4">
+                        <SchoolLogo size="lg" lightText />
+                        <p className="mt-3 text-xs leading-relaxed text-emerald-200/90">{profile?.description || settings?.tagline || 'Informasi dan profil resmi sekolah.'}</p>
+                        <SocialLinks settings={settings} profile={profile} className="pt-2" />
+                    </div>
+                    <div className="space-y-3 lg:col-span-3">
+                        <h4 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider"><span className="h-2 w-2 rounded-full bg-amber-400" />Navigasi Halaman</h4>
+                        <ul className="space-y-2 text-xs text-emerald-200/80">
+                            {navigation.map(([to, label, feature]) => (
+                                <li key={to}><Link to={to} feature={feature} className="flex items-center gap-1.5 transition-colors hover:text-amber-300"><ChevronRight className="h-3.5 w-3.5 shrink-0 text-emerald-600" /><span>{label}</span></Link></li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className="space-y-3 lg:col-span-2">
+                        <h4 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider"><span className="h-2 w-2 rounded-full bg-amber-400" />Layanan & Info</h4>
+                        <ul className="space-y-2 text-xs text-emerald-200/80">
+                            {services.map(([to, label, feature]) => (
+                                <li key={to}><Link to={to} feature={feature} className="flex items-center gap-1.5 transition-colors hover:text-amber-300"><ChevronRight className="h-3.5 w-3.5 shrink-0 text-emerald-600" /><span>{label}</span></Link></li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className="space-y-3 lg:col-span-3">
+                        <h4 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider"><span className="h-2 w-2 rounded-full bg-white/70" />Kontak Sekolah</h4>
+                        <div className="space-y-2.5 text-xs text-emerald-200/80">
+                            {profile?.address && <div className="flex items-start gap-2.5"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-amber-400" /><span>{profile.address}</span></div>}
+                            {profile?.phone && <div className="flex items-center gap-2.5"><Phone className="h-4 w-4 shrink-0 text-amber-400" /><a className="hover:text-white" href={`tel:${profile.phone}`}>{profile.phone}</a></div>}
+                            {profile?.email && <div className="flex items-center gap-2.5"><Mail className="h-4 w-4 shrink-0 text-amber-400" /><a className="hover:text-white" href={`mailto:${profile.email}`}>{profile.email}</a></div>}
+                        </div>
+                    </div>
+                </div>
+                <div className="flex flex-col items-center justify-between gap-4 pt-8 text-xs text-emerald-300/80 sm:flex-row">
+                    <p>{settings?.footer_text || `© ${new Date().getFullYear()} ${settings?.school_name || profile?.name || 'Sekolah'}. Hak cipta dilindungi.`}</p>
+                    <div className="flex flex-wrap items-center justify-center gap-4">
+                        <Link to="/kontak" feature="contact" className="transition-colors hover:text-white">Kontak Sekolah</Link>
+                        <span className="text-white/30">•</span>
+                        <span className="text-white/70">Website sekolah dikembangkan oleh <span className="font-semibold" style={{ color: 'var(--school-secondary)' }}>Nabastala</span></span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    );
 };
+
+export default Footer;
